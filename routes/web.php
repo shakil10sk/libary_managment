@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+use function Ramsey\Uuid\v1;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,24 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test',function(){
+    return view('member');
+});
+
+
+Route::prefix('member')->group(function(){
+
+    Route::get('add','memberController@index');
+});
+
+Route::get('/logout',function(){
+    auth()->logout();
+    return redirect()->to('/');
+});
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
