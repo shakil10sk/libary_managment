@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class memberController extends Controller
 {
@@ -23,7 +24,7 @@ class memberController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -80,5 +81,16 @@ class memberController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function list_data(){
+
+        $list = DB::table('members')
+        ->select('*')
+        ->wherenull('deleted_at')
+        ->get();
+
+        dd($list);
     }
 }

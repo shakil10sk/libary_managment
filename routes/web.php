@@ -17,26 +17,33 @@ use function Ramsey\Uuid\v1;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/test',function(){
-    return view('member');
-});
-
-
-Route::prefix('member')->group(function(){
-
-    Route::get('add','memberController@index');
-});
-
-Route::get('/logout',function(){
-    auth()->logout();
-    return redirect()->to('/');
-});
-
+    return redirect()->to('/login');
+})->name('login');
 
 
 Auth::routes();
 
+
+
+Route::group(['middleware' => 'auth'],function(){
+
+    Route::get('/logout',function(){
+        auth()->logout();
+        return redirect()->to('/login');
+    })->name('logout');
+
+
+    Route::prefix('member')->group(function(){
+
+        Route::get('/add','memberController@index')->name('add_member');
+
+        Route::get('/list_data','memberController@list_data')->name('list_data');
+    });
+
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
