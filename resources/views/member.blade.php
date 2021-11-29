@@ -11,7 +11,7 @@
                 <div class="card-header" style="background-color: #f7f7f7">
                     <h5 class="float-left"> Member </h5>
                     <a href="javascript:void(0)" id="btn" class="btn btn-success float-right btn-group"
-                       onclick="add_member()"><i class="fas fa-plus"></i> যোগ করুন</a>
+                       onclick="add_member()" ><i class="fas fa-plus"></i> যোগ করুন</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -57,8 +57,7 @@
 
 
                         <div class="form-group" id="member_name">
-                            <label class="control-label col-md-12 col-sm-12 col-xs-12" for="name">Member Name<span
-                                    class="text-danger">*</span></label>
+                            <label class="control-label col-md-12 col-sm-12 col-xs-12" for="name">Member Name<span class="text-danger">*</span></label>
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <input type="text" id="name" required name="name" class="form-control "
                                        data-parsley-length="[3, 40]" data-parsley-trigger="keyup"
@@ -67,15 +66,61 @@
                             </div>
                         </div>
 
-                        <div class="form-group" id="member_name">
+                        <div class="form-group" id="age">
                             <label class="control-label col-md-12 col-sm-12 col-xs-12" for="name">Member Age</label>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input type="text" id="name" name="name" class="form-control "
+                                <input type="text" id="age" name="age" class="form-control "
                                         data-parsley-trigger="keyup"
                                        placeholder="Member Age"
                                        data-parsley-error-message="Please Give a Valid Name">
                             </div>
                         </div>
+                        <div class="form-group" id="member_nid">
+                            <label class="control-label col-md-12 col-sm-12 col-xs-12" for="name">Member NID</label>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <input type="text" id="member_nid" name="nid" class="form-control "
+                                        data-parsley-trigger="keyup"
+                                       placeholder="Member nid"
+                                       data-parsley-error-message="Please Give a NID">
+                            </div>
+                        </div>
+                        <div class="form-group" id="student_id">
+                            <label class="control-label col-md-12 col-sm-12 col-xs-12" for="name">student id</label>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <input type="text" id="student_id" name="student_id" class="form-control "
+                                        data-parsley-trigger="keyup"
+                                       placeholder="student id"
+                                       data-parsley-error-message="Please Give a student id">
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="school_name">
+                            <label class="control-label col-md-12 col-sm-12 col-xs-12" for="name">School Name</label>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <input type="text" id="school_name" name="school_name" class="form-control "
+                                        data-parsley-trigger="keyup"
+                                       placeholder="school Name"
+                                       data-parsley-error-message="Please Give a valid school name">
+                            </div>
+                        </div>
+                        <div class="form-group" id="mobile">
+                            <label class="control-label col-md-12 col-sm-12 col-xs-12" for="name">mobile<span class="text-danger">*</span></label>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <input type="text" id="mobile" name="mobile" class="form-control "
+                                        data-parsley-trigger="keyup"
+                                       placeholder="mobile"
+                                       data-parsley-error-message="Please Give a valid mobile">
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="address">
+                            <label class="control-label col-md-12 col-sm-12 col-xs-12" for="name">address<span class="text-danger">*</span></label>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <textarea name="address" id="address" cols="10"class="form-control " rows="5"></textarea>
+                            </div>
+                        </div>
+
+
 
                         <div class="form-group row">
                             <div class="col-12 col-lg-10">
@@ -104,19 +149,20 @@
 @endsection
 
 @section('js')
-    {{-- <script src="{{asset('public/custom/member.js')}}"></script> --}}
+    <script src="{{asset('public/js/custom/member.js')}}"></script>
 
     <script>
         // member_list();
         $(document).ready(function(){
 
-            function add_member(){
-                console.log("done");
+            console.log('done');
 
-            }
+
         });
-        // documnt.getElementById()
-        // document.getElementById("btn").innerHTML = "Hello World!";
+
+        // function add_member(){
+        //         console.log("done");
+        //     }
 
     </script>
 

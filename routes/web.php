@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'],function(){
 
         Route::get('/add','memberController@index')->name('add_member');
 
+        Route::post('/store','memberController@store')->name('store_member');
+
         Route::get('/list_data','memberController@list_data')->name('list_data');
     });
 

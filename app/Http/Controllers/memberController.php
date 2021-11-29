@@ -35,7 +35,23 @@ class memberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $member_data = [
+            'name' => $request->name,
+            'age' => $request->age,
+            'nid' => $request->nid,
+            'student_id' => $request->student_ide,
+            'address' => $request->address,
+            'mobile' => $request->mobile,
+            'school_name' => $request->school_name,
+            'status' => 1,
+        ];
+
+        $data_store = DB::table('members')
+                            ->insert($member_data);
+        return response()->json([
+                                'status' => "success",
+                                'message' => "successfully member add done",
+        ]);
     }
 
     /**
@@ -91,6 +107,6 @@ class memberController extends Controller
         ->wherenull('deleted_at')
         ->get();
 
-        dd($list);
+        echo json_encode($list);
     }
 }
