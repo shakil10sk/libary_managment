@@ -23,6 +23,9 @@
                                 <th>Name</th>
                                 <th>Age</th>
                                 <th>Nid</th>
+                                <th>school_name</th>
+                                <th>Adress</th>
+                                <th>status</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -152,17 +155,7 @@
     <script src="{{asset('public/js/custom/member.js')}}"></script>
 
     <script>
-        // member_list();
-        $(document).ready(function(){
-
-            console.log('done');
-
-
-        });
-
-        // function add_member(){
-        //         console.log("done");
-        //     }
+        member_list();
 
     </script>
 

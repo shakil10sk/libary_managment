@@ -6,28 +6,56 @@ var member_table;
 
 function member_list()
 {
-    console.log("hello");
 
     member_table = $("#member_datatable").DataTable({
 
         scrollCollapse: true,
         autoWidth: false,
         responsive: true,
-        processing: true,
         serverSide: true,
-
+        processing: true,
         ajax: {
-            url : url + "/member/list_data"
-
+            url : url + "/member/list_data",
+            dataType: "JSON",
+                type: "get",
         },
 
         columns: [
             {
-                data: 'DT_RowIndex',
-
+                data: null,
+                render: function(){
+                    return member_table.page.info().start + member_table.column(0).nodes().length;
+                }
             },
             {
                 data: 'name',
+            },
+            {
+                data: 'age',
+            },
+            {
+                data: 'nid',
+            },
+            {
+                data: 'school_name',
+                // data: null,
+            },
+            {
+                data: 'address',
+            },
+            {
+                data: 'status',
+            },
+            {
+                data: null,
+                render: function(data, type, row, meta) {
+                    let html = '';
+                    html = "<a href='javascript:void(0)' id='edit' class='btn btn-warning btn-xs  m-1'" +
+                        " onclick='member_edit(" + meta.row + ")' ><i class='fa fa-edit' ></i> এডিট</a>" +
+                        " <a href='javascript:void(0)' class='btn btn-danger btn-xs btndelete'" +
+                        " onclick='delete_member(" + meta.row + ")' ><i class='fa fa-trash' ></i> ডিলিট</a>";
+                    return html;
+                }
             },
 
         ]
@@ -78,6 +106,8 @@ function member_list()
                     buttons: false
                 })
                 closememberModal();
+
+                member_table.ajax.reload();
                 // $("#category_datatable").DataTable().draw(true)
             },
         });
