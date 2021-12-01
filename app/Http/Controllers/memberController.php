@@ -39,7 +39,7 @@ class memberController extends Controller
             'name' => $request->name,
             'age' => $request->age,
             'nid' => $request->nid,
-            'student_id' => $request->student_ide,
+            'student_id' => $request->student_id,
             'address' => $request->address,
             'mobile' => $request->mobile,
             'school_name' => $request->school_name,
@@ -103,12 +103,20 @@ class memberController extends Controller
     public function list_data(){
 
         $list = DB::table('members')
-                ->select('*')
+                // ->select('*')
+                ->selectRaw("SQL_CALC_FOUND_ROWS *")
                 ->wherenull('deleted_at')
                 ->get();
 
+        $total = DB::select("SELECT FOUND_ROWS() AS total")[0]->total;
+
+        // dd($total);
+
         $response = [
-            'data'=>$list,
+            "data" => $list,
+            "recordsTotal" => $total,
+            "recordsFiltered" => $total,
+            "draw" =>$_GET['draw']
         ];
 
         echo json_encode($response);

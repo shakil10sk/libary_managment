@@ -2,6 +2,18 @@
 
 @section('title','Member')
 
+@section('css')
+    <style>
+        #member_datatable_filter{
+            float:right;
+        }
+        #member_datatable_paginate{
+            float:right;
+        }
+    </style>
+
+@endsection
+
 @section('main-section')
 
     <!--page-content-wrapper-->
@@ -23,6 +35,9 @@
                                 <th>Name</th>
                                 <th>Age</th>
                                 <th>Nid</th>
+                                <th>school_name</th>
+                                <th>Adress</th>
+                                <th>status</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -49,7 +64,7 @@
                 </div>
 
                 {{-- <form name="member_form" data-parsley-validate  id="member_form" class="form-horizontal form_middle" enctype="multipart/form-data" method="post" onsubmit="savemember()"> --}}
-                <form action="javascript:void(0)" id="member_form" class="form-horizontal form_middle" enctype="multipart/form-data" onsubmit="savemember()">
+                <form action="javascript:void(0)" data-parsley-validate id="member_form" class="form-horizontal form_middle" enctype="multipart/form-data" onsubmit="savemember()">
 
                     <div class="modal-body">
 
@@ -59,20 +74,17 @@
                         <div class="form-group" id="member_name">
                             <label class="control-label col-md-12 col-sm-12 col-xs-12" for="name">Member Name<span class="text-danger">*</span></label>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input type="text" id="name" required name="name" class="form-control "
+                                <input type="text" id="name"  name="name" class="form-control "
                                        data-parsley-length="[3, 40]" data-parsley-trigger="keyup"
                                        placeholder="Member Name"
-                                       data-parsley-error-message="Please Give a Valid Name">
+                                       data-parsley-error-message="<p class='text-danger'>Please Give a Valid Name</p>" data-parsley-required>
                             </div>
                         </div>
 
                         <div class="form-group" id="age">
                             <label class="control-label col-md-12 col-sm-12 col-xs-12" for="name">Member Age</label>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input type="text" id="age" name="age" class="form-control "
-                                        data-parsley-trigger="keyup"
-                                       placeholder="Member Age"
-                                       data-parsley-error-message="Please Give a Valid Name">
+                                <input type="text" id="age" name="age" class="form-control " data-parsley-trigger="keyup"placeholder="Member Age" data-parsley-error-message="<p class='text-danger'>Please Give a Valid Age</p>">
                             </div>
                         </div>
                         <div class="form-group" id="member_nid">
@@ -152,17 +164,7 @@
     <script src="{{asset('public/js/custom/member.js')}}"></script>
 
     <script>
-        // member_list();
-        $(document).ready(function(){
-
-            console.log('done');
-
-
-        });
-
-        // function add_member(){
-        //         console.log("done");
-        //     }
+        member_list();
 
     </script>
 
