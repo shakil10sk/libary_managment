@@ -85,30 +85,31 @@ function member_list()
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        if (parslyValid("member_form")) {
+            $.ajax({
+                url: url + '/member/store',
+                type: 'POST',
+                data: form_data,
+                processData: false,
+                contentType: false,
+                dataType: 'JSON',
+                success: function(response) {
 
-        $.ajax({
-            url: url + '/member/store',
-            type: 'POST',
-            data: form_data,
-            processData: false,
-            contentType: false,
-            dataType: 'JSON',
-            success: function(response) {
+                    if (response.status == "success") {
 
-                if (response.status == "success") {
+                        $("#member_modal").modal('toggle');
+                    }
+                    Swal.fire({
+                        title: response.title,
+                        text: response.message,
+                        type: response.status,
+                        buttons: false
+                    })
+                    closememberModal();
 
-                    $("#member_modal").modal('toggle');
-                }
-                Swal.fire({
-                    title: response.title,
-                    text: response.message,
-                    type: response.status,
-                    buttons: false
-                })
-                closememberModal();
-
-                member_table.ajax.reload();
-                // $("#category_datatable").DataTable().draw(true)
-            },
-        });
+                    member_table.ajax.reload();
+                    // $("#category_datatable").DataTable().draw(true)
+                },
+            });
+        }
     }

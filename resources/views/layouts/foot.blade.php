@@ -20,6 +20,10 @@
 
 	<script src="{{ asset('public/js/jquery-ui.js')}}"></script>
 
+	<script src="{{ asset('public/js/parsley.js')}}"></script>
+
+	{{-- <script src="{{ asset('public/js/parsley_validate.js')}}"></script> --}}
+
     <!-- add sweet alert js & css in footer -->
 	<script src="{{ asset('public/js/sweetalert/sweetalert2.all.min.js')}}"></script>
 
@@ -59,6 +63,12 @@
     {{-- <script src="{{ asset('public/assets/js/pages/dashboard.js') }}"></script> --}}
 
     <script src="{{ asset('public/assets/js/main.js') }}"></script>
+    
+    <script>
+        function parslyValid(form_name) {
+            return $('#' + form_name).parsley().isValid();
+        }
+    </script>
 
     @yield('js')
 </body>

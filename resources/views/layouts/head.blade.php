@@ -18,5 +18,9 @@
     <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.svg" type="image/x-icon') }}">
 
     <script src="{{asset('public/js/jquery.js')}}"></script>
+
+    
+        @yield('css');
+
 </head>
 <body>
