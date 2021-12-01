@@ -103,10 +103,14 @@ class memberController extends Controller
     public function list_data(){
 
         $list = DB::table('members')
-        ->select('*')
-        ->wherenull('deleted_at')
-        ->get();
+                ->select('*')
+                ->wherenull('deleted_at')
+                ->get();
 
-        echo json_encode($list);
+        $response = [
+            'data'=>$list,
+        ];
+
+        echo json_encode($response);
     }
 }
