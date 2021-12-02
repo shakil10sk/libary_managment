@@ -16,6 +16,31 @@ use function Ramsey\Uuid\v1;
 |
 */
 
+Route::get('/phpTest',function(){
+    $x = 10;
+    $y = 20;
+
+    // Haredoc
+    $text = <<<TEXT
+    i am shakil $x + $y
+    TEXT;
+
+    echo $text."<br>";
+
+    var_dump($text);
+
+    echo "<br>";
+
+    // Nowdoc
+    $text = <<<'TEXT'
+    i am shakil $x + $y
+    TEXT;
+    echo nl2br($text);
+
+    // var_dump($text);
+
+});
+
 Route::get('/', function () {
     return redirect()->to('/login');
 })->name('login');
