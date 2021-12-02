@@ -28,7 +28,8 @@ Auth::routes();
 Route::group(['middleware' => 'auth'],function(){
 
     Route::get('/logout',function(){
-        auth()->logout();
+        // auth()->logout();
+        Auth::logout();
         return redirect()->to('/login');
     })->name('logout');
 
