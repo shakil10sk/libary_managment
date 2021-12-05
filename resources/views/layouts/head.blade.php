@@ -18,8 +18,12 @@
     <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.svg" type="image/x-icon') }}">
 
     <script src="{{asset('public/js/jquery.js')}}"></script>
+        <!-- add sweet alert js & css in footer -->
+	<script src="{{ asset('public/js/sweetalert/sweetalert2.all.min.js')}}"></script>
 
-    
+	<script src="{{ asset('public/js/sweetalert/sweet-alert.init.min.js')}}"></script>
+
+
         @yield('css');
 
 </head>

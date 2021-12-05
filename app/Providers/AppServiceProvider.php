@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // app()->bind('my_service',function($app){
+        //     dd("hi i am shaki");
+        // });
     }
 
     /**

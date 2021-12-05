@@ -35,6 +35,7 @@ class memberController extends Controller
      */
     public function store(Request $request)
     {
+
         $member_data = [
             'name' => $request->name,
             'age' => $request->age,
@@ -48,11 +49,21 @@ class memberController extends Controller
 
         $data_store = DB::table('members')
                             ->insert($member_data);
-        return response()->json([
-                                'status' => "success",
-                                'message' => "successfully member add done",
-        ]);
+
+        if($data_store){
+            return response()->json([
+                'title' => "Done",
+                'status' => "success",
+                'message' => "successfully member add done",
+            ]);
+        }else{
+            return response()->json([
+                'status' => "error",
+                'message' => "faild to save data",
+            ]);
+        }
     }
+
 
     /**
      * Display the specified resource.

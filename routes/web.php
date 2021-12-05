@@ -20,6 +20,9 @@ Route::get('/', function () {
     return redirect()->to('/login');
 })->name('login');
 
+// Route::get('new',function(){
+//     app()->make('my_service');
+// });
 
 Auth::routes();
 

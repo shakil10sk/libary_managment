@@ -51,9 +51,9 @@ function member_list()
                 render: function(data, type, row, meta) {
                     let html = '';
                     html = "<a href='javascript:void(0)' id='edit' class='btn btn-warning btn-xs  m-1'" +
-                        " onclick='member_edit(" + meta.row + ")' ><i class='fa fa-edit' ></i> এডিট</a>" +
+                        " onclick='member_edit(" + data.id + ")' ><i class='fa fa-edit' ></i> এডিট</a>" +
                         " <a href='javascript:void(0)' class='btn btn-danger btn-xs btndelete'" +
-                        " onclick='delete_member(" + meta.row + ")' ><i class='fa fa-trash' ></i> ডিলিট</a>";
+                        " onclick='delete_member(" + data.id + ")' ><i class='fa fa-trash' ></i> ডিলিট</a>";
                     return html;
                 }
             },
@@ -95,21 +95,32 @@ function member_list()
                 dataType: 'JSON',
                 success: function(response) {
 
-                    if (response.status == "success") {
+                    member_table.ajax.reload();
 
-                        $("#member_modal").modal('toggle');
-                    }
-                    Swal.fire({
+                    swal({
                         title: response.title,
                         text: response.message,
                         type: response.status,
-                        buttons: false
-                    })
-                    closememberModal();
+                        buttons: true
+                    });
 
-                    member_table.ajax.reload();
-                    // $("#category_datatable").DataTable().draw(true)
+                    if (response.status == "success") {
+
+                        $("#member_modal").modal('toggle');
+
+                        closememberModal();
+
+                    $("#category_datatable").DataTable().draw(true)
+
+                    }
+
                 },
             });
         }
     }
+
+    function member_edit(id){
+        swal('success','i am done '+id);
+    }
+
+
